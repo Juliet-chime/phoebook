@@ -11,6 +11,9 @@ const Phonebook = () => {
     }
   };
 
+  const removePerson = (id) =>
+    setPersons(persons.filter((person) => person.id !== id));
+
   return (
     <div>
       <Form addPerson={addPerson}></Form>
@@ -20,7 +23,8 @@ const Phonebook = () => {
             <th>S/N</th>
             <th>FirstName</th>
             <th>LastName</th>
-            <th colSpan={4}>Phone</th>
+            <th colSpan={10}>Phone</th>
+            <th colSpan>Action</th>
           </tr>
           {persons.map((p, index) => (
             <tr key={p.id}>
@@ -28,6 +32,9 @@ const Phonebook = () => {
               <td>{p.firstname}</td>
               <td>{p.lastname}</td>
               <td>{p.phone}</td>
+              <td>
+                <button onClick={() => removePerson(p.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
