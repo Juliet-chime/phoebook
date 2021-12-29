@@ -40,7 +40,7 @@ const Phonebook = () => {
     setPersons(persons.filter((person) => person.id !== id));
 
   return (
-    <div>
+    <div className="container">
       <Form
         addPerson={addPerson}
         isEditing={isEditing}
@@ -48,31 +48,43 @@ const Phonebook = () => {
         setCurrentPerson={setCurrentPerson}
         handleUpdatePerson={handleUpdatePerson}
       ></Form>
-      <table className=" table table-striped table-bordered">
-        <tbody>
-          <tr>
-            <th>#</th>
-            <th colSpan={1}>First Name</th>
-            <th colSpan={1}>Last Name</th>
-            <th colSpan={1}>Mobile Number</th>
-            <th colSpan={2}>Action</th>
-          </tr>
-          {persons.map((person) => (
-            <tr key={person.id}>
-              <td>{person.id}</td>
-              <td>{person.firstname}</td>
-              <td>{person.lastname}</td>
-              <td>{person.phone}</td>
-              <td>
-                <button onClick={() => handleEditClick(person)}>Edit</button>
-              </td>
-              <td>
-                <button onClick={() => removePerson(person.id)}>Delete</button>
-              </td>
+      <div className="table-responsive col-sm-12 col-md-9 col-lg-6 ">
+        <table className=" table border-primary table-bordered ">
+          <tbody>
+            <tr>
+              <th>#</th>
+              <th colSpan={1}>First Name</th>
+              <th colSpan={1}>Last Name</th>
+              <th colSpan={1}>Mobile Number</th>
+              <th colSpan={2}>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            {persons.map((person) => (
+              <tr key={person.id}>
+                <td>{person.id}</td>
+                <td>{person.firstname}</td>
+                <td>{person.lastname}</td>
+                <td>{person.phone}</td>
+                <td>
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => handleEditClick(person)}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => removePerson(person.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

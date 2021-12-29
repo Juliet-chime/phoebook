@@ -47,12 +47,14 @@ const Form = ({
   };
 
   return (
-    <div>
+    <div className="col-md-7 col-sm-10 col-lg-5">
       {isEditing ? (
         <form onSubmit={handleEditFormSubmit}>
-          <div>
-            <label htmlFor="">Edit Firstname</label>
+          <div className="mb-3">
+            <label htmlFor="editfirstname">Edit Firstname</label>
             <input
+              id="editfirstname"
+              className="form-control"
               type="text"
               value={currentPerson.firstname}
               name="firstname"
@@ -60,9 +62,11 @@ const Form = ({
             />
           </div>
 
-          <div>
-            <label htmlFor="">Edit Lastname</label>
+          <div className="mb-3">
+            <label htmlFor="editlastname">Edit Lastname</label>
             <input
+              id="editlastname"
+              className="form-control"
               type="text"
               value={currentPerson.lastname}
               name="lastname"
@@ -70,22 +74,30 @@ const Form = ({
             />
           </div>
 
-          <div>
-            <label htmlFor=""> Edit Phone</label>
+          <div className="mb-3">
+            <label htmlFor="editphone"> Edit Phone</label>
             <input
+              id="editphone"
+              className="form-control"
               type="text"
               value={currentPerson.phone}
               name="phone"
               onChange={handleEditInputChange}
             />
           </div>
-          <button type="submit">Save</button>
+          <div className="mb-3 d-grid">
+            <button className="btn btn-success block" type="submit">
+              Update
+            </button>
+          </div>
         </form>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="">First Name</label>
+          <div className="mb-3">
+            <label htmlFor="firstname">First Name</label>
             <input
+              id="firstname"
+              className="form-control"
               type="text"
               value={person.firstname}
               name="firstname"
@@ -93,9 +105,11 @@ const Form = ({
             />
           </div>
 
-          <div>
-            <label htmlFor="">Last Name</label>
+          <div className="mb-3">
+            <label htmlFor="lastname">Last Name</label>
             <input
+              id="lastname"
+              className="form-control"
               type="text"
               value={person.lastname}
               name="lastname"
@@ -103,16 +117,22 @@ const Form = ({
             />
           </div>
 
-          <div>
-            <label htmlFor="">Phone</label>
+          <div className="mb-3">
+            <label htmlFor="phone">Phone</label>
             <input
+              id="phone"
+              className="form-control"
               type="text"
               value={person.phone}
               name="phone"
               onChange={onChange}
             />
           </div>
-          <button type="submit">Save</button>
+          <div className=" d-grid mb-3">
+            <button className="btn btn-primary block" type="submit">
+              Add
+            </button>
+          </div>
         </form>
       )}
     </div>
