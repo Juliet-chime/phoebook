@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./form";
 
 const Phonebook = () => {
-  const [persons, setPersons] = useState([]);
+  const [persons, setPersons] = useState(() => {
+    const existingPersons = localStorage.getItem("persons");
+
+    if (existingPersons) {
+      return JSON.parse(existingPersons);
+    } else {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("persons", JSON.stringify(persons));
+  }, [persons]);
+
   const [isEditing, setIsEditing] = useState(false);
   const [currentPerson, setCurrentPerson] = useState({});
 
@@ -38,13 +51,13 @@ const Phonebook = () => {
         setCurrentPerson={setCurrentPerson}
         handleUpdatePerson={handleUpdatePerson}
       ></Form>
-      <table>
+      <table className=" table table-striped table-bordered">
         <tbody>
           <tr>
-            <th>S/N</th>
-            <th colSpan={1}>FirstName</th>
-            <th colSpan={1}>LastName</th>
-            <th colSpan={1}>Phone</th>
+            <th>#</th>
+            <th colSpan={1}>First Name</th>
+            <th colSpan={1}>Last Name</th>
+            <th colSpan={1}>Mobile Number</th>
             <th colSpan={2}>Action</th>
           </tr>
           {persons.map((person) => (

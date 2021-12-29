@@ -8,7 +8,7 @@ const Form = ({
   handleUpdatePerson,
 }) => {
   const [person, setPerson] = useState({
-    id: 0,
+    id: 1,
     firstname: "",
     lastname: "",
     phone: "",
