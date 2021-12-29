@@ -23,14 +23,18 @@ const Form = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPerson({ ...person });
-    setPerson({
-      ...person,
-      id: person.id + 1,
-      firstname: "",
-      lastname: "",
-      phone: "",
-    });
+    const { firstname, lastname, phone } = person;
+    if (firstname !== "" && lastname !== "" && phone !== "") {
+      addPerson({ ...person });
+
+      setPerson({
+        ...person,
+        id: person.id + 1,
+        firstname: "",
+        lastname: "",
+        phone: "",
+      });
+    }
   };
 
   const handleEditFormSubmit = (e) => {

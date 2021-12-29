@@ -20,10 +20,7 @@ const Phonebook = () => {
   const [currentPerson, setCurrentPerson] = useState({});
 
   const addPerson = (person) => {
-    const { firstname, lastname, phone } = person;
-    if (firstname !== "" && lastname !== "" && phone !== "") {
-      setPersons([...persons, person]);
-    }
+    setPersons([...persons, person]);
   };
 
   const handleEditClick = (person) => {
