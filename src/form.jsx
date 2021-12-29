@@ -18,13 +18,14 @@ const Form = ({
   const onChange = (e) => {
     setPerson({
       ...person,
-      [e.target.name]: e.target.value,
+      [e.target.name]: capitalize(e.target.value),
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { firstname, lastname, phone } = person;
+    let { firstname, lastname, phone } = person;
+
     if (firstname !== "" && lastname !== "" && phone !== "") {
       addPerson({ ...person, id: persons.length + 1 });
 
@@ -37,6 +38,9 @@ const Form = ({
       });
     }
   };
+
+  const capitalize = (str) =>
+    str && str[0].toUpperCase() + str.slice(1).toLowerCase();
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
