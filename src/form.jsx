@@ -6,9 +6,10 @@ const Form = ({
   currentPerson,
   setCurrentPerson,
   handleUpdatePerson,
+  persons,
 }) => {
   const [person, setPerson] = useState({
-    id: 1,
+    id: persons.length,
     firstname: "",
     lastname: "",
     phone: "",
@@ -25,11 +26,11 @@ const Form = ({
     e.preventDefault();
     const { firstname, lastname, phone } = person;
     if (firstname !== "" && lastname !== "" && phone !== "") {
-      addPerson({ ...person });
+      addPerson({ ...person, id: persons.length + 1 });
 
       setPerson({
         ...person,
-        id: person.id + 1,
+
         firstname: "",
         lastname: "",
         phone: "",
@@ -47,7 +48,7 @@ const Form = ({
   };
 
   return (
-    <div className="col-md-7 col-sm-10 col-lg-5">
+    <div>
       {isEditing ? (
         <form onSubmit={handleEditFormSubmit}>
           <div className="mb-3">
