@@ -1,4 +1,3 @@
-import "./App.css";
 import Phonebook from "./phonebook";
 
 function App() {
